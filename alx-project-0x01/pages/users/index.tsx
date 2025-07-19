@@ -1,4 +1,5 @@
 import UserCard from "@/components/common/UserCard";
+import Header from "@/components/layout/Header";
 import { UserProps } from "@/interfaces";
 
 interface UserPageProps {
@@ -7,8 +8,10 @@ interface UserPageProps {
 const Users: React.FC<UserPageProps> = ({ posts }) => {
   console.log(posts);
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Users Page</h1>
+     <div className="flex flex-col h-screen">
+      <Header />
+      <main>
+ <h1 className="text-2xl font-bold">Users Page</h1>
       <div className="grid grid-cols-3 gap-2">
         {posts?.map(
           (
@@ -38,6 +41,8 @@ const Users: React.FC<UserPageProps> = ({ posts }) => {
           )
         )}
       </div>
+      </main>
+     
     </div>
   );
 };
