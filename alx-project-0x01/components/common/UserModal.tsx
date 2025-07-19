@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UserData, UserModalProps } from "@/interfaces";
+import { UserData, UserModalProps, UserProps } from "@/interfaces";
 import React, { useState } from "react";
 
 const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
@@ -58,7 +58,14 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(user);
+    
+    // Convert UserData to UserProps format (add required id)
+    const userWithId: UserProps = {
+      ...user,
+      id: Date.now() // Generate a temporary ID, or use any number
+    };
+    
+    onSubmit(userWithId);
     onClose();
   };
 
