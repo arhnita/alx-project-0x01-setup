@@ -5,41 +5,18 @@ import { UserProps } from "@/interfaces";
 interface UserPageProps {
   posts: UserProps[];
 }
+
 const Users: React.FC<UserPageProps> = ({ posts }) => {
   console.log(posts);
   return (
     <div className="flex flex-col h-screen">
       <Header />
-      <main>
-        <h1 className="text-2xl font-bold">Users Page</h1>
+      <main className="p-4">
+        <h1 className="text-2xl font-semibold">Users List</h1>
         <div className="grid grid-cols-3 gap-2">
-          {posts?.map(
-            (
-              {
-                id,
-                name,
-                username,
-                email,
-                address,
-                phone,
-                website,
-                company,
-              }: UserProps,
-              key: number
-            ) => (
-              <UserCard
-                id={id}
-                name={name}
-                username={username}
-                email={email}
-                address={address}
-                phone={phone}
-                website={website}
-                company={company}
-                key={key}
-              />
-            )
-          )}
+          {posts.map((user, key) => (
+            <UserCard key={key} {...user} />
+          ))}
         </div>
       </main>
     </div>
@@ -56,4 +33,5 @@ export async function getStaticProps() {
     },
   };
 }
+
 export default Users;
