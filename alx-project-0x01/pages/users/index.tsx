@@ -9,7 +9,7 @@ const Users: React.FC<UserPageProps> = ({ posts }) => {
   return (
     <div>
       <h1 className="text-2xl font-bold">Users Page</h1>
-      <div>
+      <div className="grid grid-cols-3 gap-2">
         {posts?.map(
           (
             {
