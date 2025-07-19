@@ -8,27 +8,40 @@ interface UserPageProps {
 const Users: React.FC<UserPageProps> = ({ posts }) => {
   console.log(posts);
   return (
-     <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen">
       <Header />
       <main>
- <h1 className="text-2xl font-bold">Users Page</h1>
-      <div className="grid grid-cols-3 gap-2">
-       {posts?.map((user: UserProps, key: number) => (
-  <UserCard
-    key={key}
-    id={user.id}
-    name={user.name}
-    username={user.username}
-    email={user.email}
-    address={user.address}
-    phone={user.phone}
-    website={user.website}
-    company={user.company}
-  />
-))}
-      </div>
+        <h1 className="text-2xl font-bold">Users Page</h1>
+        <div className="grid grid-cols-3 gap-2">
+          {posts?.map(
+            (
+              {
+                id,
+                name,
+                username,
+                email,
+                address,
+                phone,
+                website,
+                company,
+              }: UserProps,
+              key: number
+            ) => (
+              <UserCard
+                id={id}
+                name={name}
+                username={username}
+                email={email}
+                address={address}
+                phone={phone}
+                website={website}
+                company={company}
+                key={key}
+              />
+            )
+          )}
+        </div>
       </main>
-     
     </div>
   );
 };
